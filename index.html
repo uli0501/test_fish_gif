@@ -5,87 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>孔雀魚</title>
     <style>
-        /* 消除預設邊距，確保 100% 填滿 */
         body, html {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            overflow: hidden; /* 防止螢幕滾動，維持滿版 */
-            background-color: #000; /* GIF 載入前顯示黑色 */
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            margin: 0; padding: 0; height: 100%; overflow: hidden;
+            background-color: #1a1a1a; /* 圖沒跑出來時的深灰色背景 */
+            font-family: sans-serif;
         }
-
-        /* GIF 背景容器 */
         .gif-background {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            /* 關鍵：使用 cover 讓 GIF 自動裁切並填滿螢幕，不變形 */
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            /* 請確保下方的 fish.gif 與你上傳的檔名完全一致（注意大小寫） */
             background: url('bg.gif') no-repeat center center fixed;
             background-size: cover;
-            z-index: -1; /* 讓背景在文字下方 */
+            z-index: -1;
         }
-
-        /* 內容遮罩：在 GIF 上加一層半透明黑色，確保文字清晰 */
         .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.4); /* 透明度可調整 (0.0 ~ 1.0) */
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background-color: rgba(0, 0, 0, 0.4);
             z-index: 0;
         }
-
-        /* 文字內容容器：垂直水平置中 */
         .content {
-            position: relative;
-            z-index: 1; /* 讓文字在最上層 */
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100%;
-            color: white;
-            text-align: center;
-            padding: 0 20px; /* 左右預留邊距 */
-            box-sizing: border-box;
+            position: relative; z-index: 1; display: flex; flex-direction: column;
+            align-items: center; justify-content: center; height: 100%;
+            color: white; text-align: center; padding: 0 20px;
         }
-
-        /* 標題樣式 */
-        h1 {
-            font-size: 2.5rem; /* 依需求調整大小 */
-            margin-bottom: 10px;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.5); /* 增加文字陰影，提高可讀性 */
-        }
-
-        /* 內文樣式 */
-        p {
-            font-size: 1.1rem;
-            line-height: 1.6;
-            margin: 0;
-            text-shadow: 0 1px 3px rgba(0,0,0,0.5);
-            max-width: 600px; /* 限制文字寬度，在大螢幕手機上較美觀 */
-        }
+        h1 { font-size: 2.5rem; text-shadow: 0 2px 10px rgba(0,0,0,0.8); }
+        p { font-size: 1.2rem; text-shadow: 0 2px 5px rgba(0,0,0,0.8); }
     </style>
 </head>
 <body>
-
     <div class="gif-background"></div>
-    
     <div class="overlay"></div>
-
     <div class="content">
-        <h1>嗨，我是 Name</h1>
-        
-        <p>
-            歡迎光臨我的 NFC 專屬頁面。<br>
-            這是一個完全針對手機設計的滿版 GIF 版面。<br>
-            很高興認識你！
-        </p>
+        <h1>孔雀魚專屬頁面</h1>
+        <p>這是一個滿版 GIF 的測試效果。<br>如果看到這行字但沒看到魚，代表圖片路徑有誤。</p>
     </div>
-
 </body>
 </html>
