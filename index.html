@@ -2,61 +2,89 @@
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>我的專屬 NFC 頁面</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>My NFC Card</title>
     <style>
-        /* 基礎排版設定，讓畫面置中並具有現代感 */
-        body {
+        /* 消除預設邊距，確保 100% 填滿 */
+        body, html {
             margin: 0;
             padding: 0;
+            height: 100%;
+            overflow: hidden; /* 防止螢幕滾動，維持滿版 */
+            background-color: #000; /* GIF 載入前顯示黑色 */
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        /* GIF 背景容器 */
+        .gif-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* 關鍵：使用 cover 讓 GIF 自動裁切並填滿螢幕，不變形 */
+            background: url('bg.gif') no-repeat center center fixed;
+            background-size: cover;
+            z-index: -1; /* 讓背景在文字下方 */
+        }
+
+        /* 內容遮罩：在 GIF 上加一層半透明黑色，確保文字清晰 */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4); /* 透明度可調整 (0.0 ~ 1.0) */
+            z-index: 0;
+        }
+
+        /* 文字內容容器：垂直水平置中 */
+        .content {
+            position: relative;
+            z-index: 1; /* 讓文字在最上層 */
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            min-height: 100vh;
-            background-color: #f4f4f9; /* 淺灰底色，可自行更改 */
-            font-family: 'Helvetica Neue', Arial, sans-serif;
-            color: #333;
-        }
-        
-        /* 內容區塊的卡片樣式 */
-        .card {
-            background: white;
-            padding: 30px;
-            border-radius: 20px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            max-width: 85%;
-            width: 320px;
+            height: 100%;
+            color: white;
             text-align: center;
+            padding: 0 20px; /* 左右預留邊距 */
+            box-sizing: border-box;
         }
 
-        /* GIF 圖片樣式，確保不會超出卡片 */
-        img.gif-image {
-            width: 100%;
-            border-radius: 12px;
-            margin-bottom: 20px;
-        }
-
+        /* 標題樣式 */
         h1 {
-            font-size: 24px;
+            font-size: 2.5rem; /* 依需求調整大小 */
             margin-bottom: 10px;
-            color: #222;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5); /* 增加文字陰影，提高可讀性 */
         }
 
+        /* 內文樣式 */
         p {
-            font-size: 16px;
+            font-size: 1.1rem;
             line-height: 1.6;
-            color: #666;
+            margin: 0;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+            max-width: 600px; /* 限制文字寬度，在大螢幕手機上較美觀 */
         }
     </style>
 </head>
 <body>
 
-    <div class="card">
-        <img src="my-animation.gif" alt="我的動畫" class="gif-image">
+    <div class="gif-background"></div>
+    
+    <div class="overlay"></div>
+
+    <div class="content">
+        <h1>嗨，我是 Name</h1>
         
-        <h1>哈囉，我是ＯＯＯ！</h1>
-        <p>很高興認識你！這是一段簡單的自我介紹文字。透過這個 NFC 標籤，你可以隨時看到我的最新動態。</p>
+        <p>
+            歡迎光臨我的 NFC 專屬頁面。<br>
+            這是一個完全針對手機設計的滿版 GIF 版面。<br>
+            很高興認識你！
+        </p>
     </div>
 
 </body>
