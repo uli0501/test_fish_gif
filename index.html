@@ -5,38 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>孔雀魚</title>
     <style>
+        /* 移除瀏覽器預設邊距 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body, html {
-            margin: 0; padding: 0; height: 100%; overflow: hidden;
-            background-color: #1a1a1a; /* 圖沒跑出來時的深灰色背景 */
-            font-family: sans-serif;
+            width: 100%;
+            height: 100%;
+            overflow: hidden; /* 防止出現滾動條 */
+            background-color: #000; /* 圖片載入前顯示黑色 */
         }
-        .gif-background {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            /* 請確保下方的 fish.gif 與你上傳的檔名完全一致（注意大小寫） */
-            background: url('bg.gif') no-repeat center center fixed;
-            background-size: cover;
-            z-index: -1;
+
+        .full-screen-gif {
+            width: 100vw;
+            height: 100vh;
+            /* 關鍵：讓 GIF 填滿螢幕，會依比例自動裁切邊緣以適應不同手機螢幕 */
+            object-fit: cover;
+            display: block;
         }
-        .overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background-color: rgba(0, 0, 0, 0.4);
-            z-index: 0;
-        }
-        .content {
-            position: relative; z-index: 1; display: flex; flex-direction: column;
-            align-items: center; justify-content: center; height: 100%;
-            color: white; text-align: center; padding: 0 20px;
-        }
-        h1 { font-size: 2.5rem; text-shadow: 0 2px 10px rgba(0,0,0,0.8); }
-        p { font-size: 1.2rem; text-shadow: 0 2px 5px rgba(0,0,0,0.8); }
     </style>
 </head>
 <body>
-    <div class="gif-background"></div>
-    <div class="overlay"></div>
-    <div class="content">
-        <h1>孔雀魚專屬頁面</h1>
-        <p>這是一個滿版 GIF 的測試效果。<br>如果看到這行字但沒看到魚，代表圖片路徑有誤。</p>
-    </div>
+
+    <img src="bg.gif" alt="Background GIF" class="full-screen-gif">
+
 </body>
 </html>
